@@ -1,0 +1,23 @@
+{
+  "skill_name": "lazyweb-design",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "ขอ reference หน้า pricing ของแอป SaaS สัก 10-15 ตัวอย่างหน่อย อยากดูเฉยๆ ยังไม่ต้องวิเคราะห์",
+      "expected_output": "Routes to quick-references; Thai+English report.md/html + downloaded references under .lazyweb/quick-references/",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "นี่คือหน้า checkout ของแอปฉัน (แนบ screenshot) ช่วยรีวิวหน่อยว่าควรปรับตรงไหน และขอไอเดียแปลกๆ ด้วย",
+      "expected_output": "Routes to improve (existing design wins over 'ideas'); offers brainstorm as next step",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I'm designing onboarding for a meditation app. What do the top apps do, and which patterns actually drive retention?",
+      "expected_output": "Routes to research; competitor analysis with Thai explanations, English UI terms and search queries",
+      "files": []
+    }
+  ]
+}

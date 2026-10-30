@@ -1,0 +1,92 @@
+@import 'tailwindcss';
+
+/* Design tokens extracted from the Stitch "AI Hub" screen */
+@theme {
+  --color-canvas: #f8f9fa;
+  --color-surface: #f8f9fa;
+  --color-surface-card: #ffffff;
+  --color-carbon: #0f172a;
+  --color-carbon-muted: #1e293b;
+  --color-cobalt: #2563eb;
+  --color-cobalt-light: #dbeafe;
+  --color-mint: #059669;
+  --color-mint-light: #d1fae5;
+  --color-slate-border: #e2e8f0;
+  --color-slate-muted: #64748b;
+  --color-slate-subtle: #94a3b8;
+  --color-primary: #0f172a;
+  --color-on-primary: #ffffff;
+
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-display-xl: 'Barlow Condensed', sans-serif;
+  --font-headline: 'Inter', sans-serif;
+  --font-headline-lg: 'Barlow Condensed', sans-serif;
+  --font-headline-sm: 'Inter', sans-serif;
+  --font-subheading: 'Inter', sans-serif;
+  --font-subheading-lg: 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-body-sm: 'Inter', sans-serif;
+  --font-label-caps: 'JetBrains Mono', monospace;
+  --font-label-code: 'JetBrains Mono', monospace;
+
+  --text-display-xl: 120px;
+  --text-display-xl--line-height: 108px;
+  --text-display-xl--letter-spacing: -0.03em;
+  --text-display-xl--font-weight: 700;
+  --text-display: 76px;
+  --text-display--line-height: 70px;
+  --text-display--letter-spacing: -0.03em;
+  --text-display--font-weight: 700;
+  --text-headline-lg: 44px;
+  --text-headline-lg--line-height: 42px;
+  --text-headline-lg--letter-spacing: -0.02em;
+  --text-headline-lg--font-weight: 700;
+  --text-headline: 38px;
+  --text-headline--line-height: 42px;
+  --text-headline--letter-spacing: -0.02em;
+  --text-headline--font-weight: 600;
+  --text-headline-sm: 24px;
+  --text-headline-sm--line-height: 30px;
+  --text-headline-sm--letter-spacing: -0.02em;
+  --text-headline-sm--font-weight: 600;
+  --text-subheading-lg: 19px;
+  --text-subheading-lg--line-height: 26px;
+  --text-subheading-lg--letter-spacing: 0em;
+  --text-subheading-lg--font-weight: 600;
+  --text-subheading: 16px;
+  --text-subheading--line-height: 24px;
+  --text-subheading--letter-spacing: 0em;
+  --text-subheading--font-weight: 400;
+  --text-body: 15px;
+  --text-body--line-height: 22px;
+  --text-body--letter-spacing: -0.01em;
+  --text-body--font-weight: 400;
+  --text-body-sm: 13px;
+  --text-body-sm--line-height: 18px;
+  --text-body-sm--letter-spacing: -0.01em;
+  --text-body-sm--font-weight: 400;
+  --text-label-caps: 11px;
+  --text-label-caps--line-height: 14px;
+  --text-label-caps--letter-spacing: 0.05em;
+  --text-label-caps--font-weight: 600;
+  --text-label-code: 12px;
+  --text-label-code--line-height: 16px;
+  --text-label-code--letter-spacing: -0.02em;
+  --text-label-code--font-weight: 500;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 7rem;
+  }
+  body {
+    @apply bg-canvas font-body text-carbon antialiased selection:bg-cobalt selection:text-white;
+    margin: 0;
+    overscroll-behavior: none;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_standard" name="shell-type"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "canvas": "#f8f9fa",
+            "surface": "#f8f9fa",
+            "surface-card": "#ffffff",
+            "carbon": "#0f172a",
+            "carbon-muted": "#1e293b",
+            "cobalt": "#2563eb",
+            "cobalt-light": "#dbeafe",
+            "mint": "#059669",
+            "mint-light": "#d1fae5",
+            "slate-border": "#e2e8f0",
+            "slate-muted": "#64748b",
+            "slate-subtle": "#94a3b8",
+            "primary": "#0f172a",
+            "on-primary": "#ffffff"
+          },
+          fontFamily: {
+            "display": ["Barlow Condensed", "sans-serif"],
+            "display-xl": ["Barlow Condensed", "sans-serif"],
+            "headline": ["Inter", "sans-serif"],
+            "headline-lg": ["Barlow Condensed", "sans-serif"],
+            "headline-sm": ["Inter", "sans-serif"],
+            "subheading": ["Inter", "sans-serif"],
+            "subheading-lg": ["Inter", "sans-serif"],
+            "body": ["Inter", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"],
+            "label-caps": ["JetBrains Mono", "monospace"],
+            "label-code": ["JetBrains Mono", "monospace"]
+          },
+          fontSize: {
+            "display-xl": ["120px", { lineHeight: "108px", letterSpacing: "-0.03em", fontWeight: "700" }],
+            "display": ["76px", { lineHeight: "70px", letterSpacing: "-0.03em", fontWeight: "700" }],
+            "headline-lg": ["44px", { lineHeight: "42px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "headline": ["38px", { lineHeight: "42px", letterSpacing: "-0.02em", fontWeight: "600" }],
+            "headline-sm": ["24px", { lineHeight: "30px", letterSpacing: "-0.02em", fontWeight: "600" }],
+            "subheading-lg": ["19px", { lineHeight: "26px", letterSpacing: "0em", fontWeight: "600" }],
+            "subheading": ["16px", { lineHeight: "24px", letterSpacing: "0em", fontWeight: "400" }],
+            "body": ["15px", { lineHeight: "22px", letterSpacing: "-0.01em", fontWeight: "400" }],
+            "body-sm": ["13px", { lineHeight: "18px", letterSpacing: "-0.01em", fontWeight: "400" }],
+            "label-caps": ["11px", { lineHeight: "14px", letterSpacing: "0.05em", fontWeight: "600" }],
+            "label-code": ["12px", { lineHeight: "16px", letterSpacing: "-0.02em", fontWeight: "500" }]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-canvas font-body text-carbon antialiased selection:bg-cobalt selection:text-white">
+<!-- TOP HEADER / NAV -->
+<header class="fixed top-0 left-0 w-full z-50 pointer-events-none">
+<div class="h-28 w-full max-w-[1280px] mx-auto px-6 flex items-center justify-center">
+<div class="pointer-events-auto w-full bg-white/95 backdrop-blur-md border border-slate-border shadow-sm rounded-full py-2.5 px-6 flex items-center justify-between gap-4">
+<!-- Brand / Identity -->
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-carbon flex items-center justify-center text-white font-bold font-label-caps">
+<span class="text-cobalt">#</span>
+</div>
+<span class="font-headline font-subheading-lg text-carbon tracking-tight uppercase font-bold hidden sm:inline-block">AI HUB <span class="text-cobalt text-xs font-label-caps ml-1 px-1.5 py-0.5 rounded bg-cobalt-light font-semibold">MODULAR V3</span></span>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden lg:flex items-center gap-6" data-active-classes="text-cobalt font-semibold">
+<a class="font-body text-body text-slate-muted hover:text-carbon transition-colors" href="#models">Models</a>
+<a class="font-body text-body text-slate-muted hover:text-carbon transition-colors" href="#arena">Live Arena</a>
+<a class="font-body text-body text-slate-muted hover:text-carbon transition-colors" href="#agents">Agent Pipelines</a>
+<a class="font-body text-body text-slate-muted hover:text-carbon transition-colors" href="#features">Architecture</a>
+<a class="font-body text-body text-slate-muted hover:text-carbon transition-colors" href="#pricing">Pricing</a>
+<a class="font-body text-body text-slate-muted hover:text-carbon transition-colors" href="#docs">Docs</a>
+</nav>
+<!-- CTA & Quick Key -->
+<div class="flex items-center gap-2">
+<a class="font-label-code text-label-code bg-slate-100 hover:bg-slate-200 text-carbon rounded-full px-3.5 py-2 transition-colors hidden md:inline-flex items-center gap-1.5" href="#docs">
+<span class="w-2 h-2 rounded-full bg-mint animate-pulse"></span>
+            api.aihub.com/v1
+          </a>
+<a class="font-body text-body bg-cobalt text-white hover:bg-blue-700 rounded-full px-5 py-2 font-medium transition-colors shadow-sm text-center flex items-center gap-1.5" href="#playground">
+<span>Instant API Key</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN WRAPPER -->
+<main class="w-full pt-28 min-h-screen bg-canvas">
+<div class="max-w-[1280px] mx-auto px-6 flex flex-col gap-16">
+<!-- 01. HERO: DYNAMIC 50/50 SPLIT-SCREEN (VALUE PROP VS BENCHMARK LAB ARENA) -->
+<section class="w-full pt-4">
+<!-- Live Edge Status Pill Strip -->
+<div class="flex flex-wrap items-center gap-2 mb-4">
+<span class="bg-carbon text-white px-3 py-1 rounded-full font-label-caps text-label-caps uppercase flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-mint animate-ping"></span>
+<span>EDGE GATEWAY: ACTIVE</span>
+</span>
+<span class="bg-white border border-slate-border text-slate-muted px-3 py-1 rounded-full font-label-caps text-label-caps">
+            GLOBAL LATENCY: <strong class="text-carbon">14ms</strong>
+</span>
+<span class="bg-mint-light text-mint border border-mint/20 px-3 py-1 rounded-full font-label-caps text-label-caps">
+            ZERO MARKUP PASSTHROUGH
+          </span>
+<span class="bg-cobalt-light text-cobalt border border-cobalt/20 px-3 py-1 rounded-full font-label-caps text-label-caps">
+            OPENAI-COMPATIBLE DROP-IN
+          </span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+<!-- LEFT PANE: FIXED-FEEL VALUE PROP & DUAL CONVERSION TRIGGERS -->
+<div class="lg:col-span-6 bg-white border border-slate-border rounded-3xl p-8 sm:p-10 flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="absolute -right-16 -top-16 w-56 h-56 bg-cobalt-light/40 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-5">
+<span class="font-label-caps text-label-caps text-cobalt tracking-wider uppercase font-semibold">
+                KINETIC MODULAR ROUTING ENGINE
+              </span>
+<h1 class="font-display text-display sm:text-[84px] text-carbon uppercase tracking-tight leading-[0.92]">
+                ORCHESTRATE EVERY AI MODEL.<br/>
+<span class="text-cobalt">PAY AS YOU INFER.</span>
+</h1>
+<p class="font-subheading text-subheading text-slate-muted max-w-xl">
+                One universal endpoint replaces 14 vendor contracts. Switch reasoning engines on the fly, automate zero-downtime failovers, and stream tokens at zero proxy markups.
+              </p>
+<!-- Interactive Model Switcher Pills -->
+<div class="flex flex-col gap-2 pt-2">
+<span class="font-label-caps text-label-caps text-slate-subtle uppercase">QUICK INFERENCE PROFILES:</span>
+<div class="flex flex-wrap gap-2">
+<button class="px-3.5 py-1.5 rounded-lg bg-carbon text-white font-label-code text-label-code flex items-center gap-1.5 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-cobalt"></span>
+<span>claude-3-5-sonnet</span>
+<span class="text-slate-subtle">· 142ms</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-carbon font-label-code text-label-code flex items-center gap-1.5 transition-colors">
+<span class="w-2 h-2 rounded-full bg-slate-400"></span>
+<span>gpt-4o</span>
+<span class="text-slate-muted">· 118ms</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-carbon font-label-code text-label-code flex items-center gap-1.5 transition-colors">
+<span class="w-2 h-2 rounded-full bg-mint"></span>
+<span>deepseek-r1</span>
+<span class="text-slate-muted">· 184ms</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Dual Action Triggers & Verification Bar -->
+<div class="relative z-10 pt-8 mt-6 border-t border-slate-border flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+<div class="flex flex-wrap items-center gap-3">
+<a class="bg-cobalt hover:bg-blue-700 text-white font-body text-body rounded-xl px-6 py-3.5 font-semibold transition-all shadow-md flex items-center justify-center gap-2" href="#playground">
+<span>Start Free — $10 Test Credit</span>
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</a>
+<a class="bg-slate-100 hover:bg-slate-200 text-carbon font-body text-body rounded-xl px-5 py-3.5 font-medium transition-colors text-center" href="#docs">
+                  Read 1-Line Docs
+                </a>
+</div>
+<span class="font-label-caps text-label-caps text-slate-subtle text-right hidden sm:block">
+                NO CREDIT CARD<br/>SETUP IN 60 SEC
+              </span>
+</div>
+</div>
+<!-- RIGHT PANE: LIVE MODEL ARENA & BENCHMARK LAB SIMULATOR -->
+<div class="lg:col-span-6 bg-carbon text-white rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-lg border border-slate-800" id="arena">
+<div>
+<!-- Arena Header -->
+<div class="flex items-center justify-between pb-4 border-b border-carbon-muted">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-cobalt text-[20px]">speed</span>
+<span class="font-label-caps text-label-caps text-white uppercase tracking-wider font-semibold">BENCHMARK LAB // LIVE RUNTIME ARENA</span>
+</div>
+<div class="flex items-center gap-2 bg-carbon-muted px-2.5 py-1 rounded-md font-label-code text-label-code text-slate-subtle">
+<span>SIMULATED LOAD: 1,000 TOKENS</span>
+</div>
+</div>
+<!-- Test Prompt Selector -->
+<div class="bg-carbon-muted/70 rounded-xl p-3.5 my-4 border border-slate-700/60">
+<div class="flex items-center justify-between text-slate-subtle font-label-caps text-label-caps mb-1.5">
+<span>PROMPT BENCHMARK SUITE:</span>
+<span class="text-mint font-label-code text-label-code">CODE GEN + COMPLEX REASONING</span>
+</div>
+<p class="font-label-code text-label-code text-slate-200">
+                  "Synthesize an asynchronous token-bucket rate limiter with Redis cluster failover in Rust."
+                </p>
+</div>
+<!-- Real-time Comparison Meters -->
+<div class="flex flex-col gap-4">
+<!-- Claude 3.5 Sonnet Row -->
+<div class="bg-carbon-muted/40 rounded-xl p-3.5 border border-slate-700/40">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded bg-amber-500/20 text-amber-300 font-label-caps text-xs flex items-center justify-center font-bold">CL</span>
+<span class="font-headline text-sm font-semibold text-white">Claude 3.5 Sonnet</span>
+<span class="bg-mint-light/10 text-mint border border-mint/30 px-1.5 py-0.5 rounded text-[10px] font-label-caps">HIGHEST ACCURACY 93.7%</span>
+</div>
+<div class="font-label-code text-xs text-slate-300">
+<span class="text-cobalt font-semibold">82 tok/s</span> · <span>$0.015 / 1k</span>
+</div>
+</div>
+<!-- Progress Speed Bar -->
+<div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden mb-1.5">
+<div class="bg-cobalt h-full w-[88%] rounded-full"></div>
+</div>
+<div class="flex justify-between font-label-caps text-[10px] text-slate-400">
+<span>TTFT: 240ms</span>
+<span>QUALITY BENCHMARK: 9.6 / 10</span>
+</div>
+</div>
+<!-- GPT-4o Row -->
+<div class="bg-carbon-muted/40 rounded-xl p-3.5 border border-slate-700/40">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded bg-emerald-500/20 text-emerald-300 font-label-caps text-xs flex items-center justify-center font-bold">GP</span>
+<span class="font-headline text-sm font-semibold text-white">GPT-4o</span>
+<span class="bg-cobalt/20 text-blue-300 border border-cobalt/30 px-1.5 py-0.5 rounded text-[10px] font-label-caps">FASTEST TTFT</span>
+</div>
+<div class="font-label-code text-xs text-slate-300">
+<span class="text-mint font-semibold">108 tok/s</span> · <span>$0.010 / 1k</span>
+</div>
+</div>
+<!-- Progress Speed Bar -->
+<div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden mb-1.5">
+<div class="bg-mint h-full w-[96%] rounded-full"></div>
+</div>
+<div class="flex justify-between font-label-caps text-[10px] text-slate-400">
+<span>TTFT: 170ms</span>
+<span>QUALITY BENCHMARK: 9.2 / 10</span>
+</div>
+</div>
+<!-- DeepSeek R1 Row -->
+<div class="bg-carbon-muted/40 rounded-xl p-3.5 border border-slate-700/40">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded bg-blue-500/20 text-blue-300 font-label-caps text-xs flex items-center justify-center font-bold">DS</span>
+<span class="font-headline text-sm font-semibold text-white">DeepSeek R1</span>
+<span class="bg-yellow-400/20 text-yellow-300 border border-yellow-400/30 px-1.5 py-0.5 rounded text-[10px] font-label-caps">LOWEST COST (92% CHEAPER)</span>
+</div>
+<div class="font-label-code text-xs text-slate-300">
+<span class="text-yellow-400 font-semibold">64 tok/s</span> · <span>$0.002 / 1k</span>
+</div>
+</div>
+<!-- Progress Speed Bar -->
+<div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden mb-1.5">
+<div class="bg-yellow-400 h-full w-[70%] rounded-full"></div>
+</div>
+<div class="flex justify-between font-label-caps text-[10px] text-slate-400">
+<span>TTFT: 380ms (THINKING BUFFER)</span>
+<span>QUALITY BENCHMARK: 9.4 / 10</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Arena Console Footer -->
+<div class="mt-6 pt-4 border-t border-carbon-muted flex flex-col sm:flex-row items-center justify-between gap-3">
+<div class="flex items-center gap-2 font-label-code text-label-code text-slate-300">
+<span class="material-symbols-outlined text-mint text-[18px]">verified</span>
+<span>Active Routing: Smart Auto-Fallback Enabled</span>
+</div>
+<button class="bg-white/10 hover:bg-white/20 text-white font-label-caps text-label-caps px-3.5 py-2 rounded-lg transition-colors flex items-center gap-1.5" onclick="navigator.clipboard.writeText('curl -X POST https://api.aihub.com/v1/chat/completions')">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+                TEST IN PLAYGROUND
+              </button>
+</div>
+</div>
+</div>
+</section>
+<!-- 02. CORE FEATURES: HORIZONTAL SCROLLABLE FEATURE STRIP & MODULAR METRIC CARDS -->
+<section class="w-full" id="features">
+<div class="flex flex-col gap-6">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<span class="font-label-caps text-label-caps text-cobalt uppercase font-semibold">01 / ARCHITECTURE HIGHLIGHTS</span>
+<h2 class="font-display text-headline-lg sm:text-display text-carbon uppercase tracking-tight">
+                MODULAR EDGE ARCHITECTURE
+              </h2>
+</div>
+<p class="font-body text-body text-slate-muted max-w-md">
+              Engineered for resilient systems where milliseconds define conversions and downtime is non-negotiable.
+            </p>
+</div>
+<!-- Feature Modular Strip (Grid of 4) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Metric Card 1 -->
+<div class="bg-white border border-slate-border rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:border-cobalt transition-colors">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="w-10 h-10 rounded-xl bg-cobalt-light text-cobalt flex items-center justify-center material-symbols-outlined text-[20px]">
+                    hub
+                  </span>
+<span class="font-label-caps text-label-caps bg-slate-100 text-carbon px-2 py-0.5 rounded">1 KEY</span>
+</div>
+<h3 class="font-headline font-subheading-lg text-carbon uppercase tracking-tight mb-2">Unified Authentication</h3>
+<p class="font-body-sm text-body-sm text-slate-muted">
+                  Pass calls across OpenAI, Anthropic, Google, and open models using a singular encrypted bearer token.
+                </p>
+</div>
+<div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between font-label-code text-label-code">
+<span class="text-slate-subtle">PROVIDER COVERAGE</span>
+<span class="text-carbon font-semibold">100+ MODELS</span>
+</div>
+</div>
+<!-- Metric Card 2 -->
+<div class="bg-white border border-slate-border rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:border-cobalt transition-colors">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="w-10 h-10 rounded-xl bg-mint-light text-mint flex items-center justify-center material-symbols-outlined text-[20px]">
+                    alt_route
+                  </span>
+<span class="font-label-caps text-label-caps bg-mint-light text-mint px-2 py-0.5 rounded">&lt;40MS</span>
+</div>
+<h3 class="font-headline font-subheading-lg text-carbon uppercase tracking-tight mb-2">Sub-50ms Smart Failover</h3>
+<p class="font-body-sm text-body-sm text-slate-muted">
+                  Automatic retry pipelines redirect around upstream rate limits (429) or degraded server clusters instantaneously.
+                </p>
+</div>
+<div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between font-label-code text-label-code">
+<span class="text-slate-subtle">SUCCESS RATE</span>
+<span class="text-mint font-semibold">99.998%</span>
+</div>
+</div>
+<!-- Metric Card 3 -->
+<div class="bg-white border border-slate-border rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:border-cobalt transition-colors">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="w-10 h-10 rounded-xl bg-slate-100 text-carbon flex items-center justify-center material-symbols-outlined text-[20px]">
+                    shield
+                  </span>
+<span class="font-label-caps text-label-caps bg-slate-100 text-slate-muted px-2 py-0.5 rounded">RAM ONLY</span>
+</div>
+<h3 class="font-headline font-subheading-lg text-carbon uppercase tracking-tight mb-2">Zero Data Retention</h3>
+<p class="font-body-sm text-body-sm text-slate-muted">
+                  User prompts never touch persistent volumes. Ephemeral RAM streaming with SOC2 Type II compliance guarantees.
+                </p>
+</div>
+<div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between font-label-code text-label-code">
+<span class="text-slate-subtle">LOG RETENTION</span>
+<span class="text-carbon font-semibold">0 SECONDS</span>
+</div>
+</div>
+<!-- Metric Card 4 -->
+<div class="bg-white border border-slate-border rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:border-cobalt transition-colors">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="w-10 h-10 rounded-xl bg-blue-50 text-cobalt flex items-center justify-center material-symbols-outlined text-[20px]">
+                    receipt_long
+                  </span>
+<span class="font-label-caps text-label-caps bg-cobalt-light text-cobalt px-2 py-0.5 rounded">PASSTHROUGH</span>
+</div>
+<h3 class="font-headline font-subheading-lg text-carbon uppercase tracking-tight mb-2">Cost Budget Caps</h3>
+<p class="font-body-sm text-body-sm text-slate-muted">
+                  Enforce strict per-team token quotas and instant killswitches to prevent runaway recurring LLM loop expenses.
+                </p>
+</div>
+<div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between font-label-code text-label-code">
+<span class="text-slate-subtle">FEE MARKUP</span>
+<span class="text-mint font-semibold">0.00%</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 03. MODEL REGISTRY: VISUAL CARD-BASED CARDS WITH ACCURACY SCORES & RATIO BADGES -->
+<section class="w-full" id="models">
+<div class="flex flex-col gap-6">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<span class="font-label-caps text-label-caps text-cobalt uppercase font-semibold">02 / CATALOG &amp; SPECS</span>
+<h2 class="font-display text-headline-lg sm:text-display text-carbon uppercase tracking-tight">
+                FOUNDATION MODEL REGISTRY
+              </h2>
+</div>
+<!-- Category Pills Filter -->
+<div class="flex flex-wrap items-center gap-1.5 p-1 bg-white border border-slate-border rounded-full">
+<button class="px-4 py-1.5 rounded-full font-label-caps text-label-caps bg-carbon text-white">ALL (104)</button>
+<button class="px-4 py-1.5 rounded-full font-label-caps text-label-caps text-slate-muted hover:text-carbon transition-colors">REASONING</button>
+<button class="px-4 py-1.5 rounded-full font-label-caps text-label-caps text-slate-muted hover:text-carbon transition-colors">VISION</button>
+<button class="px-4 py-1.5 rounded-full font-label-caps text-label-caps text-slate-muted hover:text-carbon transition-colors">CODE</button>
+<button class="px-4 py-1.5 rounded-full font-label-caps text-label-caps text-slate-muted hover:text-carbon transition-colors">FAST LPUs</button>
+</div>
+</div>
+<!-- Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+<!-- Model Card 1: Claude 3.5 Sonnet -->
+<div class="bg-white border border-slate-border rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow relative">
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center font-display text-xl text-orange-600 font-bold">
+                      CL
+                    </div>
+<div>
+<h3 class="font-headline font-subheading-lg text-carbon">Claude 3.5 Sonnet</h3>
+<span class="font-label-caps text-label-caps text-slate-muted">ANTHROPIC · v20241022</span>
+</div>
+</div>
+<!-- Radial Accuracy Badge -->
+<div class="flex items-center gap-1 bg-mint-light text-mint px-2 py-1 rounded-md font-label-code text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+                    93.7% ACC
+                  </div>
+</div>
+<p class="font-body-sm text-body-sm text-slate-muted">
+                  Industry-benchmark code synthesis and multi-modal technical diagram interpretation.
+                </p>
+<!-- Capability Pills -->
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded bg-slate-100 text-carbon font-label-caps text-[10px]">200K CONTEXT</span>
+<span class="px-2 py-0.5 rounded bg-cobalt-light text-cobalt font-label-caps text-[10px]">TOOL CALLING</span>
+<span class="px-2 py-0.5 rounded bg-slate-100 text-slate-muted font-label-caps text-[10px]">VISION</span>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+<div>
+<span class="font-label-caps text-[10px] text-slate-subtle block">INPUT / OUTPUT</span>
+<span class="font-label-code text-sm font-semibold text-carbon">$3.00 / $15.00</span>
+</div>
+<button class="bg-slate-100 hover:bg-cobalt hover:text-white text-carbon px-3 py-1.5 rounded-lg font-label-code text-label-code transition-colors" onclick="navigator.clipboard.writeText('curl https://api.aihub.com/v1/chat/completions -H \'Authorization: Bearer $AIHUB_KEY\' -d \'{\x22model\x22:\x22claude-3-5-sonnet\x22}\'')">
+                  COPY CURL
+                </button>
+</div>
+</div>
+<!-- Model Card 2: GPT-4o -->
+<div class="bg-white border border-slate-border rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow relative">
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center font-display text-xl text-emerald-600 font-bold">
+                      GP
+                    </div>
+<div>
+<h3 class="font-headline font-subheading-lg text-carbon">GPT-4o</h3>
+<span class="font-label-caps text-label-caps text-slate-muted">OPENAI · v2024-08-06</span>
+</div>
+</div>
+<!-- Radial Accuracy Badge -->
+<div class="flex items-center gap-1 bg-mint-light text-mint px-2 py-1 rounded-md font-label-code text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+                    92.4% ACC
+                  </div>
+</div>
+<p class="font-body-sm text-body-sm text-slate-muted">
+                  High-throughput omni-model with ultra-low latency real-time voice and vision capabilities.
+                </p>
+<!-- Capability Pills -->
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded bg-slate-100 text-carbon font-label-caps text-[10px]">128K CONTEXT</span>
+<span class="px-2 py-0.5 rounded bg-cobalt-light text-cobalt font-label-caps text-[10px]">FAST TTFT</span>
+<span class="px-2 py-0.5 rounded bg-slate-100 text-slate-muted font-label-caps text-[10px]">STRUCTURED JSON</span>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+<div>
+<span class="font-label-caps text-[10px] text-slate-subtle block">INPUT / OUTPUT</span>
+<span class="font-label-code text-sm font-semibold text-carbon">$2.50 / $10.00</span>
+</div>
+<button class="bg-slate-100 hover:bg-cobalt hover:text-white text-carbon px-3 py-1.5 rounded-lg font-label-code text-label-code transition-colors" onclick="navigator.clipboard.writeText('curl https://api.aihub.com/v1/chat/completions -H \'Authorization: Bearer $AIHUB_KEY\' -d \'{\x22model\x22:\x22gpt-4o\x22}\'')">
+                  COPY CURL
+                </button>
+</div>
+</div>
+<!-- Model Card 3: DeepSeek R1 -->
+<div class="bg-white border border-slate-border rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow relative">
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center font-display text-xl text-blue-600 font-bold">
+                      DS
+                    </div>
+<div>
+<h3 class="font-headline font-subheading-lg text-carbon">DeepSeek R1</h3>
+<span class="font-label-caps text-label-caps text-slate-muted">DEEPSEEK · REASONER</span>
+</div>
+</div>
+<!-- Radial Accuracy Badge -->
+<div class="flex items-center gap-1 bg-blue-50 text-cobalt px-2 py-1 rounded-md font-label-code text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+                    VALUE KING
+                  </div>
+</div>
+<p class="font-body-sm text-body-sm text-slate-muted">
+                  Open-weights reinforcement reasoning engine providing OpenAI o1-tier performance at 10x savings.
+                </p>
+<!-- Capability Pills -->
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded bg-slate-100 text-carbon font-label-caps text-[10px]">64K CONTEXT</span>
+<span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-label-caps text-[10px]">MATH &amp; PROOFS</span>
+<span class="px-2 py-0.5 rounded bg-mint-light text-mint font-label-caps text-[10px] font-semibold">92% DISCOUNT</span>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+<div>
+<span class="font-label-caps text-[10px] text-slate-subtle block">INPUT / OUTPUT</span>
+<span class="font-label-code text-sm font-semibold text-carbon">$0.55 / $2.19</span>
+</div>
+<button class="bg-slate-100 hover:bg-cobalt hover:text-white text-carbon px-3 py-1.5 rounded-lg font-label-code text-label-code transition-colors" onclick="navigator.clipboard.writeText('curl https://api.aihub.com/v1/chat/completions -H \'Authorization: Bearer $AIHUB_KEY\' -d \'{\x22model\x22:\x22deepseek-reasoner\x22}\'')">
+                  COPY CURL
+                </button>
+</div>
+</div>
+<!-- Model Card 4: Gemini 1.5 Pro -->
+<div class="bg-white border border-slate-border rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow relative">
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-purple-50 border border-purple-200 flex items-center justify-center font-display text-xl text-purple-600 font-bold">
+                      GM
+                    </div>
+<div>
+<h3 class="font-headline font-subheading-lg text-carbon">Gemini 1.5 Pro</h3>
+<span class="font-label-caps text-label-caps text-slate-muted">GOOGLE DEEPMIND</span>
+</div>
+</div>
+<div class="flex items-center gap-1 bg-purple-50 text-purple-700 px-2 py-1 rounded-md font-label-code text-xs font-semibold">
+                    2M TOKENS
+                  </div>
+</div>
+<p class="font-body-sm text-body-sm text-slate-muted">
+                  Unrivaled multi-million token context window for digesting full software repositories and audio files.
+                </p>
+<!-- Capability Pills -->
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded bg-slate-100 text-carbon font-label-caps text-[10px]">2,000K CONTEXT</span>
+<span class="px-2 py-0.5 rounded bg-cobalt-light text-cobalt font-label-caps text-[10px]">VIDEO NATIVE</span>
+<span class="px-2 py-0.5 rounded bg-slate-100 text-slate-muted font-label-caps text-[10px]">AUDIO</span>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+<div>
+<span class="font-label-caps text-[10px] text-slate-subtle block">INPUT / OUTPUT</span>
+<span class="font-label-code text-sm font-semibold text-carbon">$1.25 / $5.00</span>
+</div>
+<button class="bg-slate-100 hover:bg-cobalt hover:text-white text-carbon px-3 py-1.5 rounded-lg font-label-code text-label-code transition-colors">
+                  COPY CURL
+                </button>
+</div>
+</div>
+<!-- Model Card 5: Llama 3.3 70B -->
+<div class="bg-white border border-slate-border rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow relative">
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-cyan-50 border border-cyan-200 flex items-center justify-center font-display text-xl text-cyan-600 font-bold">
+                      LM
+                    </div>
+<div>
+<h3 class="font-headline font-subheading-lg text-carbon">Llama 3.3 70B</h3>
+<span class="font-label-caps text-label-caps text-slate-muted">META / ACCELERATED</span>
+</div>
+</div>
+<div class="flex items-center gap-1 bg-mint-light text-mint px-2 py-1 rounded-md font-label-code text-xs font-semibold">
+                    120 TOK/S
+                  </div>
+</div>
+<p class="font-body-sm text-body-sm text-slate-muted">
+                  Open intelligence hosted on ultra-low latency LPUs for sub-second responses in client-facing chatbots.
+                </p>
+<!-- Capability Pills -->
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded bg-slate-100 text-carbon font-label-caps text-[10px]">128K CONTEXT</span>
+<span class="px-2 py-0.5 rounded bg-slate-100 text-carbon font-label-caps text-[10px]">LPU ACCEL</span>
+<span class="px-2 py-0.5 rounded bg-mint-light text-mint font-label-caps text-[10px] font-semibold">SUPER CHEAP</span>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+<div>
+<span class="font-label-caps text-[10px] text-slate-subtle block">INPUT / OUTPUT</span>
+<span class="font-label-code text-sm font-semibold text-carbon">$0.35 / $0.40</span>
+</div>
+<button class="bg-slate-100 hover:bg-cobalt hover:text-white text-carbon px-3 py-1.5 rounded-lg font-label-code text-label-code transition-colors">
+                  COPY CURL
+                </button>
+</div>
+</div>
+<!-- Model Card 6: Mistral Large 2 -->
+<div class="bg-white border border-slate-border rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow relative">
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-red-50 border border-red-200 flex items-center justify-center font-display text-xl text-red-600 font-bold">
+                      MS
+                    </div>
+<div>
+<h3 class="font-headline font-subheading-lg text-carbon">Mistral Large</h3>
+<span class="font-label-caps text-label-caps text-slate-muted">MISTRAL AI · EU HOSTED</span>
+</div>
+</div>
+<div class="flex items-center gap-1 bg-slate-100 text-carbon px-2 py-1 rounded-md font-label-code text-xs font-semibold">
+                    GDPR READY
+                  </div>
+</div>
+<p class="font-body-sm text-body-sm text-slate-muted">
+                  Multilingual flagship model sovereignly hosted in European datacenters with strict privacy compliance.
+                </p>
+<!-- Capability Pills -->
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded bg-slate-100 text-carbon font-label-caps text-[10px]">128K CONTEXT</span>
+<span class="px-2 py-0.5 rounded bg-cobalt-light text-cobalt font-label-caps text-[10px]">EU RESIDENCY</span>
+<span class="px-2 py-0.5 rounded bg-slate-100 text-slate-muted font-label-caps text-[10px]">CODE FIXING</span>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+<div>
+<span class="font-label-caps text-[10px] text-slate-subtle block">INPUT / OUTPUT</span>
+<span class="font-label-code text-sm font-semibold text-carbon">$2.00 / $6.00</span>
+</div>
+<button class="bg-slate-100 hover:bg-cobalt hover:text-white text-carbon px-3 py-1.5 rounded-lg font-label-code text-label-code transition-colors">
+                  COPY CURL
+                </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 04. AGENTS SECTION: INTERACTIVE WORKFLOW CANVAS PREVIEW (TRIGGER -> AGENT -> OUTPUT) -->
+<section class="w-full" id="agents">
+<div class="bg-carbon text-white rounded-3xl p-8 sm:p-12 flex flex-col gap-8 shadow-xl border border-slate-800">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-cobalt text-white px-2.5 py-0.5 rounded font-label-caps text-label-caps uppercase font-bold">STATEFUL CANVAS</span>
+<span class="font-label-caps text-label-caps text-slate-subtle uppercase">CHAIN-OF-TOOL PIPELINES</span>
+</div>
+<h2 class="font-display text-headline-lg sm:text-display text-white uppercase tracking-tight">
+                AUTONOMOUS AGENT WORKFLOW CANVAS
+              </h2>
+</div>
+<p class="font-body text-body text-slate-subtle max-w-md">
+              Construct multi-model fallback flows with direct webhooks, sandbox code execution, and programmatic human escalation.
+            </p>
+</div>
+<!-- Visual Node Network Graph / Pipeline Preview -->
+<div class="bg-carbon-muted/60 border border-slate-700/80 rounded-2xl p-6 sm:p-8 flex flex-col gap-6 relative overflow-hidden">
+<div class="flex items-center justify-between font-label-caps text-label-caps text-slate-subtle pb-2 border-b border-slate-700/60">
+<span class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-mint"></span>
+                ACTIVE PIPELINE: #FLOW-PULL-REQUEST-SECURITY-BOT
+              </span>
+<span class="text-cobalt">100% VISUAL TRACING</span>
+</div>
+<!-- Pipeline Nodes Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+<!-- Step 1: Ingestion Trigger -->
+<div class="bg-carbon border border-slate-700 rounded-xl p-4 flex flex-col gap-2 relative">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-xs text-cobalt font-semibold">STAGE 01</span>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">input</span>
+</div>
+<h4 class="font-headline font-semibold text-sm text-white">GitHub Webhook</h4>
+<p class="font-body-sm text-xs text-slate-400">Pulls pull-request diff &amp; touched AST boundaries.</p>
+<div class="mt-2 text-[10px] font-label-caps bg-slate-800 text-slate-300 px-2 py-1 rounded inline-block">
+                  EVENT: pull_request.opened
+                </div>
+</div>
+<!-- Step 2: Routing Agent (Arrow in desktop) -->
+<div class="bg-carbon border border-cobalt/60 rounded-xl p-4 flex flex-col gap-2 relative shadow-lg">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-xs text-mint font-semibold">STAGE 02 · REASONING</span>
+<span class="material-symbols-outlined text-mint text-[18px]">psychology</span>
+</div>
+<h4 class="font-headline font-semibold text-sm text-white">Claude 3.5 Sonnet</h4>
+<p class="font-body-sm text-xs text-slate-400">Detects OWASP vulnerabilities &amp; drafting fix patches.</p>
+<div class="mt-2 text-[10px] font-label-caps bg-cobalt/20 text-blue-300 px-2 py-1 rounded inline-block">
+                  SANDBOX DOCKER TEST
+                </div>
+</div>
+<!-- Step 3: Verification & Fallback -->
+<div class="bg-carbon border border-slate-700 rounded-xl p-4 flex flex-col gap-2 relative">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-xs text-amber-400 font-semibold">STAGE 03 · VERIFICATION</span>
+<span class="material-symbols-outlined text-amber-400 text-[18px]">verified_user</span>
+</div>
+<h4 class="font-headline font-semibold text-sm text-white">DeepSeek R1 Dual Check</h4>
+<p class="font-body-sm text-xs text-slate-400">Verifies edge cases without hallucinations.</p>
+<div class="mt-2 text-[10px] font-label-caps bg-slate-800 text-slate-300 px-2 py-1 rounded inline-block">
+                  CONSENSUS SCORE &gt; 98%
+                </div>
+</div>
+<!-- Step 4: Dispatch & Execution Output -->
+<div class="bg-carbon border border-mint/60 rounded-xl p-4 flex flex-col gap-2 relative">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-xs text-mint font-semibold">STAGE 04 · EXECUTE</span>
+<span class="material-symbols-outlined text-mint text-[18px]">task_alt</span>
+</div>
+<h4 class="font-headline font-semibold text-sm text-white">Automated PR Comment</h4>
+<p class="font-body-sm text-xs text-slate-400">Submits inline patch recommendation &amp; passes CI.</p>
+<div class="mt-2 text-[10px] font-label-caps bg-mint-light/20 text-mint px-2 py-1 rounded inline-block">
+                  STATUS: SUCCESS (1.8s)
+                </div>
+</div>
+</div>
+<!-- Interactive Agent Playground Switcher -->
+<div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-700/60 font-label-code text-label-code text-slate-300">
+<div class="flex items-center gap-2">
+<span class="text-slate-subtle">AVAILABLE AGENT TEMPLATES:</span>
+<span class="text-white hover:text-cobalt cursor-pointer underline">Financial Filing Crawler</span> · 
+                <span class="text-white hover:text-cobalt cursor-pointer underline">Zendesk SLA Triage</span> · 
+                <span class="text-white hover:text-cobalt cursor-pointer underline">DB Migration Validator</span>
+</div>
+<a class="bg-cobalt hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-label-caps text-label-caps transition-colors flex items-center gap-1.5" href="#docs">
+<span>DEPLOY TEMPLATE TO PRODUCTION</span>
+<span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- 05. DEVELOPER QUICKSTART: 1-LINE DROP-IN INTEGRATION -->
+<section class="w-full" id="docs">
+<div class="bg-white border border-slate-border rounded-3xl p-8 sm:p-10 flex flex-col gap-6 shadow-sm">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<span class="font-label-caps text-label-caps text-cobalt uppercase font-semibold">03 / ZERO-LOGIN DOCS</span>
+<h2 class="font-display text-headline-lg sm:text-display text-carbon uppercase tracking-tight">
+                DROP-IN OPENAI REPLACEMENT
+              </h2>
+</div>
+<p class="font-body text-body text-slate-muted max-w-sm">
+              Keep your existing SDKs. Simply swap your <code class="font-label-code text-label-code bg-slate-100 text-carbon px-1.5 py-0.5 rounded">base_url</code> and pass whichever model identifier you want.
+            </p>
+</div>
+<!-- Code Box -->
+<div class="bg-carbon rounded-2xl p-6 text-white font-label-code text-xs sm:text-sm overflow-x-auto shadow-inner border border-slate-800">
+<div class="flex items-center justify-between pb-4 border-b border-carbon-muted text-slate-400 font-label-caps text-xs">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-red-500 inline-block"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-yellow-500 inline-block"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500 inline-block"></span>
+<span class="ml-2 text-slate-300">python_universal_client.py</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-mint font-semibold">● 100% BACKWARD COMPATIBLE</span>
+</div>
+</div>
+<pre class="pt-4 leading-relaxed font-label-code text-slate-200"><code><span class="text-slate-500"># 1. Official OpenAI SDK (no special proprietary library required)</span>
+<span class="text-blue-400">from</span> openai <span class="text-blue-400">import</span> OpenAI
+
+<span class="text-slate-500"># 2. Re-point endpoint to AI Hub universal edge cluster</span>
+client = OpenAI(
+    <span class="text-emerald-400">base_url</span>=<span class="text-yellow-300">"https://api.aihub.com/v1"</span>,
+    <span class="text-emerald-400">api_key</span>=<span class="text-yellow-300">"aih_live_sec_token_9942a"</span>  <span class="text-slate-500"># Handles Claude, GPT, DeepSeek automatically</span>
+)
+
+<span class="text-slate-500"># 3. Call any frontier foundation model seamlessly</span>
+response = client.chat.completions.create(
+    <span class="text-emerald-400">model</span>=<span class="text-yellow-300">"claude-3-5-sonnet"</span>,              <span class="text-slate-500"># Or "gpt-4o", "deepseek-r1"</span>
+    <span class="text-emerald-400">messages</span>=[{<span class="text-yellow-300">"role"</span>: <span class="text-yellow-300">"user"</span>, <span class="text-yellow-300">"content"</span>: <span class="text-yellow-300">"Analyze query execution plan."</span>}],
+    <span class="text-emerald-400">temperature</span>=0.2
+)
+
+<span class="text-blue-400">print</span>(response.choices[0].message.content)</code></pre>
+<div class="mt-4 pt-4 border-t border-carbon-muted flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<span class="text-slate-400 text-xs font-label-caps">COMPATIBLE WITH: LANGCHAIN, LLAMAINDEX, DSPY, AUTO-GEN, LITELM</span>
+<button class="bg-cobalt hover:bg-blue-700 text-white font-label-code text-xs px-4 py-2 rounded-lg transition-colors flex items-center gap-1.5" onclick="navigator.clipboard.writeText('pip install openai')">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+                COPY PYTHON SNIPPET
+              </button>
+</div>
+</div>
+</div>
+</section>
+<!-- 06. PRICING: INTERACTIVE SLIDING TOGGLE & COST BREAKDOWN CALCULATOR -->
+<section class="w-full" id="pricing">
+<div class="flex flex-col gap-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<span class="font-label-caps text-label-caps text-cobalt uppercase font-semibold">04 / TRANSPARENT FISCAL CONTROLS</span>
+<h2 class="font-display text-headline-lg sm:text-display text-carbon uppercase tracking-tight">
+                SIMPLE PASSTHROUGH PRICING
+              </h2>
+</div>
+<!-- Monthly vs Annual Interactive Sliding Toggle -->
+<div class="flex items-center gap-3 bg-white border border-slate-border p-1.5 rounded-full shadow-sm">
+<button class="px-5 py-2 rounded-full font-label-caps text-label-caps bg-carbon text-white shadow-sm">MONTHLY</button>
+<button class="px-5 py-2 rounded-full font-label-caps text-label-caps text-slate-muted hover:text-carbon flex items-center gap-1.5">
+<span>ANNUAL BILLING</span>
+<span class="bg-mint-light text-mint px-2 py-0.5 rounded-full text-[10px] font-bold">SAVE 20%</span>
+</button>
+</div>
+</div>
+<!-- Pricing Tier Cards -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+<!-- Tier 1: Developer On-Demand -->
+<div class="bg-white border border-slate-border rounded-3xl p-8 flex flex-col justify-between shadow-sm hover:border-slate-400 transition-colors">
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-slate-muted uppercase">TIER 01 // INDIE BUILDER</span>
+<h3 class="font-headline font-headline-sm text-carbon uppercase">DEVELOPER PAYG</h3>
+<div class="flex items-baseline gap-1 my-1">
+<span class="font-display text-headline sm:text-headline-lg text-carbon">$0</span>
+<span class="font-label-code text-label-code text-slate-muted">/ PLATFORM BASE</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-muted">
+                  Full pass-through token pricing. Perfect for prototyping, solo hacking, and small client apps.
+                </p>
+<!-- Specs -->
+<div class="mt-4 flex flex-col gap-2.5 font-body-sm text-body-sm text-carbon">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-mint text-[18px]">check_circle</span>
+<span>100% exact upstream provider token costs</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-mint text-[18px]">check_circle</span>
+<span>Single universal API key</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-mint text-[18px]">check_circle</span>
+<span>Standard global edge routing</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-mint text-[18px]">check_circle</span>
+<span>Community Discord &amp; GitHub support</span>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-4 border-t border-slate-100">
+<a class="block w-full text-center bg-slate-100 hover:bg-slate-200 text-carbon font-body text-body rounded-xl py-3.5 transition-colors font-medium" href="#playground">
+                  Get Started Free ($10 Credit)
+                </a>
+</div>
+</div>
+<!-- Tier 2: Developer Pro (Cobalt Highlight Anchor) -->
+<div class="bg-carbon text-white rounded-3xl p-8 flex flex-col justify-between shadow-xl border-2 border-cobalt relative">
+<div class="absolute -top-3.5 right-6 bg-cobalt text-white px-3 py-1 rounded-full font-label-caps text-[11px] font-bold uppercase tracking-wider shadow">
+                ENGINEERING TEAMS
+              </div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-cobalt uppercase font-bold">TIER 02 // PRODUCTION</span>
+</div>
+<h3 class="font-headline font-headline-sm text-white uppercase">TEAM CLUSTER</h3>
+<div class="flex items-baseline gap-1 my-1">
+<span class="font-display text-headline sm:text-headline-lg text-white">$29</span>
+<span class="font-label-code text-label-code text-slate-400">/ MONTH</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-300">
+                  Built for production startups requiring auto-routing failover guarantees, team RBAC, and dedicated concurrency.
+                </p>
+<!-- Specs -->
+<div class="mt-4 flex flex-col gap-2.5 font-body-sm text-body-sm text-slate-200">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-mint text-[18px]">check_circle</span>
+<span>Everything in Developer PAYG</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-mint text-[18px]">check_circle</span>
+<span class="text-white font-medium">Automatic Sub-50ms Smart Failovers</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-mint text-[18px]">check_circle</span>
+<span>Multi-key RBAC &amp; per-service token budgets</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-mint text-[18px]">check_circle</span>
+<span>Real-time granular cost &amp; latency tracing</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-mint text-[18px]">check_circle</span>
+<span>99.9% Uptime edge SLA agreement</span>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-4 border-t border-carbon-muted">
+<a class="block w-full text-center bg-cobalt hover:bg-blue-700 text-white font-body text-body rounded-xl py-3.5 transition-colors font-semibold shadow-md" href="#playground">
+                  Deploy Team Gateway
+                </a>
+</div>
+</div>
+<!-- Tier 3: Enterprise Dedicated -->
+<div class="bg-white border border-slate-border rounded-3xl p-8 flex flex-col justify-between shadow-sm hover:border-slate-400 transition-colors">
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-slate-muted uppercase">TIER 03 // BESPOKE</span>
+<h3 class="font-headline font-headline-sm text-carbon uppercase">ENTERPRISE CORE</h3>
+<div class="flex items-baseline gap-1 my-1">
+<span class="font-display text-headline sm:text-headline-lg text-carbon">CUSTOM</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-muted">
+                  Sovereign VPC peering, custom open-weight weights fine-tuning, and dedicated solutions engineering.
+                </p>
+<!-- Specs -->
+<div class="mt-4 flex flex-col gap-2.5 font-body-sm text-body-sm text-carbon">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-mint text-[18px]">check_circle</span>
+<span>Dedicated isolated edge VPC gateway</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-mint text-[18px]">check_circle</span>
+<span>Zero data logging + HIPAA BAA signed</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-mint text-[18px]">check_circle</span>
+<span>Customer-managed encryption keys (CMEK)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-mint text-[18px]">check_circle</span>
+<span>24/7/365 Dedicated Slack engineering channel</span>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-4 border-t border-slate-100">
+<a class="block w-full text-center bg-slate-100 hover:bg-slate-200 text-carbon font-body text-body rounded-xl py-3.5 transition-colors font-medium" href="#contact">
+                  Contact Systems Architects
+                </a>
+</div>
+</div>
+</div>
+<!-- Cost Breakdown Calculator Widget -->
+<div class="bg-white border border-slate-border rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-cobalt-light text-cobalt flex items-center justify-center material-symbols-outlined text-[24px]">
+                calculate
+              </div>
+<div>
+<h4 class="font-headline font-semibold text-carbon text-base">Interactive Passthrough Cost Calculator</h4>
+<p class="font-body-sm text-body-sm text-slate-muted">Calculate projected savings migrating from fragmented multi-vendor contracts.</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-label-code text-label-code text-slate-muted">TYPICAL SAVINGS: <strong class="text-mint font-semibold">24% - 68% / MO</strong></span>
+<button class="bg-carbon hover:bg-carbon-muted text-white px-4 py-2 rounded-lg font-label-caps text-label-caps transition-colors">
+                CALCULATE YOUR WORKLOAD
+              </button>
+</div>
+</div>
+</div>
+</section>
+<!-- 07. FAQ SECTION -->
+<section class="w-full">
+<div class="flex flex-col gap-6">
+<div>
+<span class="font-label-caps text-label-caps text-cobalt uppercase font-semibold">05 / VERIFICATION</span>
+<h2 class="font-display text-headline-lg sm:text-display text-carbon uppercase tracking-tight">
+              FREQUENTLY ANSWERED INQUIRIES
+            </h2>
+</div>
+<div class="flex flex-col gap-3">
+<details class="group bg-white border border-slate-border rounded-2xl p-6 cursor-pointer transition-all">
+<summary class="flex justify-between items-center font-headline font-semibold text-carbon list-none">
+<span>How does AI Hub maintain zero proxy latency?</span>
+<span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="mt-3 font-body text-body text-slate-muted">
+                Our gateway runs compiled native Rust routines distributed over 300+ edge locations worldwide. Average edge overhead sits at 14 milliseconds—completely unnoticeable compared to the multi-second inference cycles of LLM completions.
+              </p>
+</details>
+<details class="group bg-white border border-slate-border rounded-2xl p-6 cursor-pointer transition-all">
+<summary class="flex justify-between items-center font-headline font-semibold text-carbon list-none">
+<span>What happens when upstream providers (e.g., Anthropic or OpenAI) go down?</span>
+<span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="mt-3 font-body text-body text-slate-muted">
+                You configure deterministic failover hierarchies. For instance, if Claude 3.5 Sonnet throws a 529 overload status, the request seamlessly routes to DeepSeek R1 or GPT-4o in less than 50 milliseconds without terminating the end-user websocket.
+              </p>
+</details>
+<details class="group bg-white border border-slate-border rounded-2xl p-6 cursor-pointer transition-all">
+<summary class="flex justify-between items-center font-headline font-semibold text-carbon list-none">
+<span>Is my prompt or response data retained or used to train models?</span>
+<span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="mt-3 font-body text-body text-slate-muted">
+                Never. AI Hub operates strictly on non-persistent ephemeral memory buffers. Zero prompt caching, zero disk persistence, and legally binding zero-training assurances are enforced across all tier contracts.
+              </p>
+</details>
+<details class="group bg-white border border-slate-border rounded-2xl p-6 cursor-pointer transition-all">
+<summary class="flex justify-between items-center font-headline font-semibold text-carbon list-none">
+<span>How easy is it to migrate an existing codebase?</span>
+<span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="mt-3 font-body text-body text-slate-muted">
+                It requires modifying exactly one parameter in your existing client constructor: replacing the <code class="font-label-code text-xs bg-slate-100 px-1 py-0.5 rounded">base_url</code> with <code class="font-label-code text-xs bg-slate-100 px-1 py-0.5 rounded">https://api.aihub.com/v1</code>. Every request parameter and JSON response structure conforms to the OpenAI spec.
+              </p>
+</details>
+</div>
+</div>
+</section>
+<!-- 08. FINAL ACTION BANNER -->
+<section class="w-full pt-4 pb-8">
+<div class="bg-carbon text-white rounded-3xl p-8 sm:p-12 flex flex-col items-center text-center gap-6 shadow-2xl relative overflow-hidden border border-slate-800">
+<div class="absolute -left-20 -bottom-20 w-80 h-80 bg-cobalt/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -right-20 -top-20 w-80 h-80 bg-mint/20 rounded-full blur-3xl pointer-events-none"></div>
+<span class="bg-mint-light/20 text-mint border border-mint/30 px-3 py-1 rounded-full font-label-caps text-label-caps uppercase font-bold">
+            ZERO CONFIG · INSTANT ONBOARDING
+          </span>
+<h2 class="font-display text-display sm:text-[88px] text-white uppercase tracking-tight max-w-3xl leading-[0.92]">
+            START INFERRING ACROSS 100+ MODELS TODAY.
+          </h2>
+<p class="font-subheading text-subheading text-slate-300 max-w-xl">
+            Join 14,000+ developers replacing vendor locks with dynamic edge routing. Claim your free $10 developer testing credits in 60 seconds.
+          </p>
+<div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+<a class="bg-cobalt hover:bg-blue-700 text-white font-body text-body rounded-xl px-8 py-4 font-semibold transition-all shadow-lg flex items-center gap-2" href="#playground">
+<span>Create Account Free</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<a class="bg-white/10 hover:bg-white/20 text-white font-body text-body rounded-xl px-8 py-4 font-medium transition-colors" href="#docs">
+              Explore API Reference
+            </a>
+</div>
+<div class="pt-4 flex flex-wrap items-center justify-center gap-6 font-label-code text-label-code text-slate-400">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-mint text-[16px]">check</span> NO CREDIT CARD REQUIRED</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-mint text-[16px]">check</span> INSTANT PROVISIONING</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-mint text-[16px]">check</span> PASSTHROUGH PRICING</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- FOOTER -->
+<footer class="w-full bg-carbon text-white mt-12 border-t border-slate-800">
+<div class="max-w-[1280px] mx-auto px-6 py-12 flex flex-col gap-10">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-8 border-b border-slate-800">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-cobalt flex items-center justify-center text-white font-bold font-label-caps">
+            #
+          </div>
+<div>
+<span class="font-display text-2xl uppercase tracking-tight font-bold">AI HUB GATEWAY</span>
+<span class="block font-label-caps text-[10px] text-slate-400 uppercase">KINETIC MODULAR ROUTING PLATFORM</span>
+</div>
+</div>
+<div class="flex items-center gap-3 font-label-code text-label-code text-slate-400">
+<span class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-mint"></span>
+            ALL CLUSTERS NOMINAL
+          </span>
+<span>·</span>
+<span>EDGE: 14MS</span>
+<span>·</span>
+<span class="bg-carbon-muted px-2.5 py-1 rounded text-white">v3.4-PROD</span>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-label-caps text-slate-400 uppercase">MODELS &amp; ARENA</span>
+<a class="font-body-sm text-body-sm text-slate-300 hover:text-white transition-colors" href="#models">Claude 3.5 Sonnet</a>
+<a class="font-body-sm text-body-sm text-slate-300 hover:text-white transition-colors" href="#models">GPT-4o Omnimodal</a>
+<a class="font-body-sm text-body-sm text-slate-300 hover:text-white transition-colors" href="#models">DeepSeek Reasoner</a>
+<a class="font-body-sm text-body-sm text-slate-300 hover:text-white transition-colors" href="#arena">Live Speed Arena</a>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-label-caps text-slate-400 uppercase">AGENTS &amp; TOOLS</span>
+<a class="font-body-sm text-body-sm text-slate-300 hover:text-white transition-colors" href="#agents">Workflow Canvas</a>
+<a class="font-body-sm text-body-sm text-slate-300 hover:text-white transition-colors" href="#agents">Code Security Agent</a>
+<a class="font-body-sm text-body-sm text-slate-300 hover:text-white transition-colors" href="#agents">Financial Analysis Agent</a>
+<a class="font-body-sm text-body-sm text-slate-300 hover:text-white transition-colors" href="#agents">LangChain Integration</a>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-label-caps text-slate-400 uppercase">DEVELOPER</span>
+<a class="font-body-sm text-body-sm text-slate-300 hover:text-white transition-colors" href="#docs">Universal SDK Docs</a>
+<a class="font-body-sm text-body-sm text-slate-300 hover:text-white transition-colors" href="#docs">Python / Node.js Clients</a>
+<a class="font-body-sm text-body-sm text-slate-300 hover:text-white transition-colors" href="#features">Smart Routing Rules</a>
+<a class="font-body-sm text-body-sm text-slate-300 hover:text-white transition-colors" href="#pricing">Cost Quota Controls</a>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-label-caps text-slate-400 uppercase">ENTERPRISE</span>
+<a class="font-body-sm text-body-sm text-slate-300 hover:text-white transition-colors" href="#pricing">Dedicated VPC Routing</a>
+<a class="font-body-sm text-body-sm text-slate-300 hover:text-white transition-colors" href="#pricing">SOC2 &amp; HIPAA Attestation</a>
+<a class="font-body-sm text-body-sm text-slate-300 hover:text-white transition-colors" href="#pricing">Zero Retention Guarantee</a>
+<a class="font-body-sm text-body-sm text-slate-300 hover:text-white transition-colors" href="#contact">Contact Architecture Team</a>
+</div>
+</div>
+<div class="pt-6 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-label-code text-slate-400">
+<span>© 2025 AI HUB PLATFORM INC. ALL RIGHTS RESERVED.</span>
+<div class="flex items-center gap-4">
+<a class="hover:text-white transition-colors" href="#">PRIVACY FRAMEWORK</a>
+<a class="hover:text-white transition-colors" href="#">TERMS OF SERVICE</a>
+<a class="hover:text-white transition-colors" href="#">STATUS CONSOLE</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
